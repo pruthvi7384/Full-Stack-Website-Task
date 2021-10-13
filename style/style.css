@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-shadow: border-box;
+}
+body{
+    background-color: #000;
+    font-family: 'Open Sans', sans-serif;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+/* ============Profile Page Styleing=========== */
+    #profile_page .profile_image img{
+        width: 200px;
+        border-radius:10px;
+        object-fit: contain;
+    }
+/* =========X===Profile Page Styleing==X========= */
