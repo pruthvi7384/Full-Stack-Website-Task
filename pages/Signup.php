@@ -101,8 +101,12 @@
             <?php echo $msg; ?>
             <div class="row justify-content-center mt-3">
                 <div class="col-xl-6 text-light text-center">
-                    <h2>Signup To Acccount</h2>
-                    <p>Choose from 130,000 online video courses with new additions published every second month</p>
+                     <?php if($id){
+                        echo "<h2>Edit To Your Acccount Detailes</h2>";
+                    }else{
+                        echo "<h2>Signup To Acccount</h2>
+                              <p>Choose from 130,000 online video courses with new additions published every second month</p>";
+                    }?>
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
