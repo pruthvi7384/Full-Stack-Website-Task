@@ -75,7 +75,7 @@
                 }else{
                     if($_FILES['image']['type']==''){
                         mysqli_query($con,"UPDATE user__info SET first_name='$first_name',last_name='$last_name',email_id='$email_id',contact_no='$contact_no',password='$password' WHERE id='$id'");
-                        //  echo "<script>window.location='Profile.php'</script>";
+                         echo "<script>window.location='Profile.php'</script>";
                     }else{
                         $img = mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM user__info WHERE id='$id'"));
                         unlink(SERVER_PROFILE_IMAGE.$img['profile_image']);
@@ -88,7 +88,7 @@
                             $image = rand(11111,99999).'_'.$_FILES['image']['name'];
                             move_uploaded_file($_FILES['image']['tmp_name'],SERVER_PROFILE_IMAGE.$image);
                             mysqli_query($con,"UPDATE user__info SET first_name='$first_name',last_name='$last_name',email_id='$email_id',contact_no='$contact_no',password='$password',profile_image='$image' WHERE id='$id'");
-                           //  echo "<script>window.location='Profile.php'</script>";
+                            echo "<script>window.location='Profile.php'</script>";
                         }
                     }
                     
