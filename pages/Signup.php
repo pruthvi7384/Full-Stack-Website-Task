@@ -48,20 +48,28 @@
                                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                                 </div>";
                     }else{ 
-                        $type=$_FILES['image']['type'];
-                        if($type!='image/jpeg' && $type!='image/png'){
-                            $msg = "<div class='alert alert-warning alert-dismissible fade show mt-2 text-center' role='alert'>
-                                    <strong>Ooop!</strong> Invalid Image Formate Please Try To Select JPeG or PNG Image.
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>";
-                        }else{
-                            $image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-                            move_uploaded_file($_FILES['image']['tmp_name'],SERVER_PROFILE_IMAGE.$image);
-                            mysqli_query($con,"INSERT INTO user__info(first_name,last_name,email_id,contact_no,password,profile_image) VALUES(' $first_name','$last_name','$email_id','$contact_no','$password','$image')");
+                        if($_FILES['image']['type']==''){
+                            mysqli_query($con,"INSERT INTO user__info(first_name,last_name,email_id,contact_no,password) VALUES(' $first_name','$last_name','$email_id','$contact_no','$password')");
                             $msg = "<div class='alert alert-success alert-dismissible fade show mt-2 text-center' role='alert'>
-                                    <strong>Congractualtion ! Your Singup Step Sussesfuly done ! <a href='pages/Login.php' class='alert-link'>Please Login Now</a> 
-                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>";
+                                            <strong>Congractualtion ! Your Singup Step Sussesfuly done ! <a href='pages/Login.php' class='alert-link'>Please Login Now</a> 
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                        </div>";
+                            }else{
+                                $type=$_FILES['image']['type'];
+                                if($type!='image/jpeg' && $type!='image/png'){
+                                    $msg = "<div class='alert alert-warning alert-dismissible fade show mt-2 text-center' role='alert'>
+                                            <strong>Ooop!</strong> Invalid Image Formate Please Try To Select JPeG or PNG Image.
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                        </div>";
+                                }else{
+                                    $image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
+                                    move_uploaded_file($_FILES['image']['tmp_name'],SERVER_PROFILE_IMAGE.$image);
+                                    mysqli_query($con,"INSERT INTO user__info(first_name,last_name,email_id,contact_no,password,profile_image) VALUES(' $first_name','$last_name','$email_id','$contact_no','$password','$image')");
+                                    $msg = "<div class='alert alert-success alert-dismissible fade show mt-2 text-center' role='alert'>
+                                            <strong>Congractualtion ! Your Singup Step Sussesfuly done ! <a href='pages/Login.php' class='alert-link'>Please Login Now</a> 
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                        </div>";
+                                }
                         }
                     }
                 }else{
