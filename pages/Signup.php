@@ -125,7 +125,13 @@
                             <input type="file" class="form-control" name="image" value=""/>
                         </div>
                         <div class="col-xl-12 text-center">
-                            <button type="submit" name="sing_up" class="btn btn-primary">Signup Now</button>
+                            <button type="submit" name="sing_up" class="btn btn-primary">
+                                <?php if($id){
+                                    echo "Update Now";
+                                }else{
+                                    echo "Signup Now";
+                                }?>
+                            </button>
                         </div>
                     </form>
                 </div>
